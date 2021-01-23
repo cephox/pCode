@@ -1,11 +1,29 @@
 # pcode
 a golfing language
 
+## Execution
+```bash
+./pcode.py <file>
+```
+
 ## Reference
 ### Numbers
 Only integers are allowed
 ### Strings/Literals
 Strings are encapsulated by `"`
+
+Spaces have to be passed as string, newlines and tabs do not
+```
+.
+
+```
+Prints a new line, but
+```
+."hello"
+
+.0
+```
+prints `hello0`
 ### Variables
 `[a-z]` are user-defined variabled
 ### Commands
