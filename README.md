@@ -1,5 +1,5 @@
 # pcode
-a golfing language
+a useless codegolfing language
 
 ## Execution
 ```bash
