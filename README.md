@@ -1,4 +1,4 @@
-# pcode
+# pCode
 a useless codegolfing language
 
 ## Execution
