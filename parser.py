@@ -2,7 +2,7 @@ import re
 
 
 def is_literal(s):
-    return re.match('^"[^"]*"$', str(s))
+    return re.match('^"[^"]*"$', str(s)) or s == "\n" or s == "\t"
 
 
 def is_number(s):
@@ -35,16 +35,23 @@ def split(line):
 variables = dict()
 
 
+def command_input():
+    i = input()
+    if is_number(i):
+        return int(i)
+    return '"' + i + '"'
+
+
 def command_print(a):
     if is_variable(a):
         if a in variables.keys():
-            print(variables[a], end="")
+            print(str(variables[a]).replace('"', ''), end="")
         else:
-            print("undefined", end="")
+            print("\"undefined\"", end="")
         return
 
     if is_number(a) or is_literal(a):
-        print(a, end="")
+        print(a.replace('"', ''), end="")
         return
 
 
@@ -58,17 +65,17 @@ def command_add(a, b):
         if a in variables.keys():
             a = variables[a]
         else:
-            a = "undefined"
+            a = "\"undefined\""
 
     if is_variable(b):
         if b in variables.keys():
             b = variables[a]
         else:
-            b = "undefined"
+            b = "\"undefined\""
 
     if is_number(a) and is_number(b):
         return a + b
-    return str(a) + str(b)
+    return '"' + str(a).replace('"', '') + str(b).replace('"', '') + '"'
 
 
 def command_sub(a, b):
@@ -76,17 +83,17 @@ def command_sub(a, b):
         if a in variables.keys():
             a = variables[a]
         else:
-            a = "undefined"
+            a = "\"undefined\""
 
     if is_variable(b):
         if b in variables.keys():
             b = variables[a]
         else:
-            b = "undefined"
+            b = "\"undefined\""
 
     if is_number(a) and is_number(b):
         return a - b
-    return "undefined"
+    return "\"undefined\""
 
 
 def command_mul(a, b):
@@ -94,17 +101,17 @@ def command_mul(a, b):
         if a in variables.keys():
             a = variables[a]
         else:
-            a = "undefined"
+            a = "\"undefined\""
 
     if is_variable(b):
         if b in variables.keys():
             b = variables[a]
         else:
-            b = "undefined"
+            b = "\"undefined\""
 
     if is_number(a) and is_number(b):
         return a * b
-    return "undefined"
+    return "\"undefined\""
 
 
 def command_div(a, b):
@@ -112,17 +119,17 @@ def command_div(a, b):
         if a in variables.keys():
             a = variables[a]
         else:
-            a = "undefined"
+            a = "\"undefined\""
 
     if is_variable(b):
         if b in variables.keys():
             b = variables[a]
         else:
-            b = "undefined"
+            b = "\"undefined\""
 
     if is_number(a) and is_number(b):
         return a / b
-    return "undefined"
+    return "\"undefined\""
 
 
 def command_modulo(a, b):
@@ -130,17 +137,17 @@ def command_modulo(a, b):
         if a in variables.keys():
             a = variables[a]
         else:
-            a = "undefined"
+            a = "\"undefined\""
 
     if is_variable(b):
         if b in variables.keys():
             b = variables[a]
         else:
-            b = "undefined"
+            b = "\"undefined\""
 
     if is_number(a) and is_number(b):
         return a % b
-    return "undefined"
+    return "\"undefined\""
 
 
 commands = {
@@ -152,7 +159,7 @@ commands = {
     ",": {
         "param_count": 0,
         "return": True,
-        "callable": input
+        "callable": command_input
     },
     "=": {
         "param_count": 2,
@@ -197,7 +204,7 @@ def compute(command, data):
             a += 1
 
         if is_literal(data[i + a]["el"]):
-            params.append(data[i + a]["el"].replace('"', ''))
+            params.append(data[i + a]["el"])
         elif is_number(data[i + a]["el"]):
             params.append(int(data[i + a]["el"]))
         elif is_variable(data[i + a]["el"]):
@@ -220,6 +227,3 @@ def parse(s):
             continue
         if is_command(el["el"]):
             compute(el["el"], data[index + 1:])
-
-
-split("…asd…=a5")
