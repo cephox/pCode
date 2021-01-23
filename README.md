@@ -13,7 +13,7 @@ Strings are encapsulated by `"`
 |:-------:|:---------:|:----------:|:-------:|
 | `.`     | 1         | Prints the content/result of the first argument | `.a` 
 | `,`     | 0         | Returns the first line from stdin | `.,`
-| ` `     |           | Used to split arguments | `+5 5`
+| ` `<br/>`<space>`|           | Used to split arguments | `+5 5` → 10
 | `=`     | 2         | Stores the result of the second argument in the first argument (has to be a variable) | `=a,`
 | `+`     | 2         | Returns the sum of both arguments | `=a+b5.a`
 | `-`     | 2         | Returns the difference between both arguments | `=a-b5.a`
