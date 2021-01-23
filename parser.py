@@ -150,6 +150,24 @@ def command_modulo(a, b):
     return "\"undefined\""
 
 
+def command_exp(a, b):
+    if is_variable(a):
+        if a in variables.keys():
+            a = variables[a]
+        else:
+            a = "\"undefined\""
+
+    if is_variable(b):
+        if b in variables.keys():
+            b = variables[a]
+        else:
+            b = "\"undefined\""
+
+    if is_number(a) and is_number(b):
+        return a ** b
+    return "\"undefined\""
+
+
 commands = {
     ".": {
         "param_count": 1,
@@ -190,6 +208,11 @@ commands = {
         "param_count": 2,
         "return": True,
         "callable": command_modulo
+    },
+    "^": {
+        "param_count": 2,
+        "return": True,
+        "callable": command_exp
     }
 }
 
