@@ -37,7 +37,7 @@ prints `hello0`
 | `-`     | 2         | Returns the difference between both arguments | `=a-b5.a`
 | `*`     | 2         | Returns the multiplication of both arguments | `=a*b5.a`
 | `/`     | 2         | Returns the division of both arguments | `=a/b5.a`
-| `%`     | 2         | Returns the rest of the division of both arguments | `=a/b5.a`
+| `%`     | 2         | Returns the rest of the division of both arguments | `=a%b5.a`
 
 
 ### Comments
