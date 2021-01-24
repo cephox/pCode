@@ -168,6 +168,20 @@ def command_exp(a, b):
     return "\"undefined\""
 
 
+def command_not(a):
+    if is_variable(a):
+        if a in variables.keys():
+            a = variables[a]
+        else:
+            a = "\"\""
+
+    if is_number(a):
+        return +(int(a) == 0)
+
+    if is_literal(a):
+        return +(a == "\"\"")
+
+
 commands = {
     ".": {
         "param_count": 1,
@@ -213,6 +227,11 @@ commands = {
         "param_count": 2,
         "return": True,
         "callable": command_exp
+    },
+    "!": {
+        "param_count": 1,
+        "return": True,
+        "callable": command_not
     }
 }
 

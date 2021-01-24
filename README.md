@@ -39,7 +39,7 @@ prints `hello0`
 | `/`     | 2         | Returns the division of both arguments | `=a/b5.a`
 | `%`     | 2         | Returns the rest of the division of both arguments | `=a%b5.a`
 | `^`     | 2         | Returns the exponention of a with b | `=a^b5.a`
-
+| `!`     | 1         | Not | `!5` » 0 <br> `!0` » 1 <br> `!"asd"` » 0
 
 ### Comments
 Comments are encapsulated by `…`
