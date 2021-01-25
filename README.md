@@ -27,6 +27,18 @@ prints `hello0`
 ### Variables
 `[a-z]` are user-defined variabled
 ### Commands
+Commands are executed the following way:
+```
+<cmd><argument1><argument2><...>
+``` 
+Example:
+```
+=a+5 5.a
+```
+Prints `10`
+
+#### Command list
+
 | Command | Arguments | Definition | Example |
 |:-------:|:---------:|:----------:|:-------:|
 | `.`     | 1         | Prints the content/result of the first argument | `.a` 
